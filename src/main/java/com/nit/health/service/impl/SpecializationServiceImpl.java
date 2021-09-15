@@ -4,11 +4,13 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.nit.health.entity.Specialization;
 import com.nit.health.repo.SpecializationRepository;
 import com.nit.health.service.ISpecializationService;
 
+@Service
 public class SpecializationServiceImpl implements ISpecializationService {
 	
 	@Autowired
