@@ -6,11 +6,15 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Data
-@Table(name="spec_tab")
+@NoArgsConstructor
+@AllArgsConstructor
+@Table(name="specialization_tab")
 public class Specialization {
 	
 	@Id
