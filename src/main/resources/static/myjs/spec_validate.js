@@ -10,25 +10,40 @@ $(document).ready(function () {
   var specNoteError = false;
 
   //3. validate function
-  function validate_specCode() {
-    var val = $("#specCode").val();
-    var exp = /^[A-Z]{4,10}$/;
-    if (val == "") {
-      $("#specCodeError").show();
-      $("#specCodeError").html("*<b>Code</b> Can not be empty");
-      $("#specCodeError").css("color", "red");
-      specCodeError = false;
-    } else if (!exp.test(val)) {
-      $("#specCodeError").show();
-      $("#specCodeError").html("*<b>Code</b> must be 4-12 chars only");
-      $("#specCodeError").css("color", "red");
-      specCodeError = false;
-    } else {
-      $("#specCodeError").hide();
-      specCodeError = true;
-    }
-    return specCodeError;
-  }
+            function validate_specCode() {
+                var val = $("#specCode").val();
+                var exp = /^[A-Z]{4,10}$/;
+                if(val=='') {
+                    $("#specCodeError").show();
+                    $("#specCodeError").html("*<b>Code</b> Can not be empty")
+                    $("#specCodeError").css('color','red');
+                    specCodeError = false;
+                } else if(!exp.test(val)) {
+                    $("#specCodeError").show();
+                    $("#specCodeError").html("*<b>Code</b> must be 4-12 chars only")
+                    $("#specCodeError").css('color','red');
+                    specCodeError = false;
+                } else {
+                    $.ajax({
+						url:'checkCode',
+						data: {"code": val},
+						success:function(resTxt) {
+							if(resTxt!='') {
+								$("#specCodeError").show();
+                   				$("#specCodeError").html(resTxt);
+                    			$("#specCodeError").css('color','red');
+                    			specCodeError = false;
+							} else {
+								$("#specCodeError").hide();
+								specCodeError = true;
+							}
+						}
+						
+					});
+                }
+                return specCodeError;
+            }
+
 
   function validate_specName() {
     var val = $("#specName").val();
@@ -44,10 +59,23 @@ $(document).ready(function () {
       $("#specNameError").css("color", "red");
       specNameError = false;
     } else {
-      $("#specNameError").hide();
-      specNameError = true;
-    }
-
+                   /* $.ajax({
+						url:'checkCode1',
+						data: {"name": val},
+						success:function(resTxt) {
+							if(resTxt1!='') {
+								$("#specNameError").show();
+                   				$("#specNameError").html(resTxt1);
+                    			$("#specNameError").css('color','red');
+                    			specNameError = false;
+							} else {
+								$("#specNameError").hide();
+								specNameError = true;
+							}
+						}
+						
+					});*/
+                }
     return specNameError;
   }
 
