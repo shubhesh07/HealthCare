@@ -17,7 +17,7 @@ public class DoctorServiceImpl implements IDoctorService {
 	
 	@Override
 	public Long saveDoctor(Doctor doc) {
-		return repo.save(doc).getDoctorId();
+		return repo.save(doc).getId();
 	}
 
 	@Override

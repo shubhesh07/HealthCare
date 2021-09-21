@@ -22,27 +22,46 @@
         <h3 class="">Doctor Register</h3>
       </div>
       <div class="card-body">
-        <form th:action="@{/doc/save}" method="POST" id="specForm">
+        <form th:action="@{/doc/save}" method="POST" id="specForm" enctype="multipart/form-data">
          <!-- row --1 -->
          
             <div class="row">
             <div class="col-2">
-              <label for="doctorName">Name</label>
+              <label for="doctorFName">First Name</label>
             </div>
             <div class="col-4">
               <input
                 type="text"
-                name="doctorName"
-                id="doctorName"
+                name="doctorFName"
+                id="doctorFName"
                 class="form-control"
               />
             </div>
             <div class="col-6">
-              <span id="doctorNameError"></span>
+              <span id="doctorFNameError"></span>
             </div>
           </div>
-
-          <!-- row --2 -->
+			
+			<!-- row --2 -->
+         
+            <div class="row">
+            <div class="col-2">
+              <label for="doctorLName">Last Name</label>
+            </div>
+            <div class="col-4">
+              <input
+                type="text"
+                name="doctorLName"
+                id="doctorLName"
+                class="form-control"
+              />
+            </div>
+            <div class="col-6">
+              <span id="doctorLNameError"></span>
+            </div>
+          </div>
+			
+          <!-- row --3 -->
           <div class="row">
             <div class="col-2">
               <label for="doctorEmail">Email Id</label>
@@ -60,23 +79,7 @@
             </div>
           </div>
 
-          <!-- row --3 -->
-          <div class="row">
-            <div class="col-2">
-              <label for="doctorSpecialization">Specialization</label>
-            </div>
-            <div class="col-4">
-              <input type="text"
-                name="doctorSpecialization"
-                id="doctorSpecialization"
-                class="form-control"
-              ></input>
-            </div>
-            <div class="col-6">
-              <span id="doctorSpecializationError"></span>
-            </div>
-            </div>
-
+         
              <!-- row --4 -->
 
             <div class="row">
@@ -154,12 +157,27 @@
                 </div>
               </div>
 
+<!-- row --8 -->
+          <div class="row">
+            <div class="col-2">
+              <label for="photos">Image</label>
+            </div>
+            <div class="col-4">
+              <input type="file" name="image" accept="image/png, image/jpeg" class="form-control"/>
+            </div>
+            <div class="col-6">
+              <span id="photosError"></span>
+            </div>
+          </div>
+
 
 
           <button type="submit" class="btn btn-success">Register</button>
         </form>
       </div>
-      <div class="card-footer"></div>
+      <div class="card-footer bg-white text-success" th:if="${message!=null}">
+            <span th:text="${message}"></span>
+        </div>
     </div>
   </div>
 </body>

@@ -9,9 +9,9 @@ import com.nit.health.entity.Doctor;
 public interface IDoctorService {
 	
 	public Long saveDoctor(Doctor doc);
-	public void updateDoctor(Doctor doc);
-	public void removeDoctor(Long doctorId);
 	public List<Doctor> getAllDoctors();
-	public Doctor getOneDoctor(Long doctorId);
+	public void removeDoctor (Long id);
+	public void updateDoctor(Doctor doc);
+	public Doctor getOneDoctor(Long id);
 
 }
